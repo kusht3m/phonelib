@@ -32,56 +32,17 @@ namespace phonelib
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Title = "EcoCare Gateway API",
+                    Title = "Phonebook",
                     Version = "v1",
-                    Description = "EcoCare Covid App API",
+                    Description = "Phonebook API",
                     Contact = new OpenApiContact
                     {
-                        Name = "Ecolog International",
-                        Email = "it@ecolog-international.com",
-                        Url = new Uri("https://ecolog-international.com/"),
+                        Name = "Phone Lib",
+                        Email = "kusht3m@gmail.com",
+                        Url = new Uri("https://github.com/kusht3m/phonelib"),
                     }
                 });
-                var securitySchema = new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                };
-                c.AddSecurityDefinition("Bearer", securitySchema);
-
-                var securityRequirement = new OpenApiSecurityRequirement();
-                securityRequirement.Add(securitySchema, new[] { "Bearer" });
-                c.AddSecurityRequirement(securityRequirement);
-
-                c.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "basic",
-                    Description = "Input your username and password to access this API",
-                    In = ParameterLocation.Header
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                    {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "basicAuth"
-                            }
-                        }, new List<string>()
-                    }
-                    });
+     
             });
             #endregion
             services.AddControllers();
