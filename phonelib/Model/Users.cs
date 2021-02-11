@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace phonelib.Model
 {
+    [Serializable()]
     public partial class Users
     {
         public int UserId { get; set; }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace phonelib.Model
 {
+    [Serializable()]
     public class Phonebook
     {
         public readonly List<Users> user = new List<Users>();
