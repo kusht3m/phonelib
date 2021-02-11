@@ -21,20 +21,24 @@ namespace phonelib.Controllers
             return Deserialize.DeserializeObject().User.OrderBy(o => o.Firstname).ToList();
         }
 
-
+        /// <param id="1">Phonebook deafult starting ID</param>
         [HttpGet("{id}")]
         public Users Get(int id)
         {
             return Deserialize.getUserbyID(id);
         }
 
+ 
         [HttpPost]
         public Users Post(string strName, string strLast, string strType, string Number)
         {
             Phonebook phonebook = Deserialize.DeserializeObject();
+            //deafult starting ID=1
             int lastID = 1;
             if (phonebook.user.Count > 0)
                 lastID = phonebook.User.OrderBy(o => o.UserId).LastOrDefault().UserId;
+
+            //UserID or Phonebook ID increments by 1 for each insert
             lastID++;
             Users newUser = new Users();
             newUser.UserId = lastID;
@@ -43,6 +47,10 @@ namespace phonelib.Controllers
             newUser.Type = strType;
             newUser.Number = Number;
             phonebook.User.Add(newUser);
+
+            /// <summary>
+            // Serialize Class is used to Save date in file (bit) and returns the new user
+            /// </summary>
             Serialize.SerializeObject(phonebook);
             return newUser;
         }

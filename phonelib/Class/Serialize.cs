@@ -17,7 +17,7 @@ namespace phonelib.Class
             System.IO.Stream ms = System.IO.File.OpenWrite(filename);
             //Format the object as Binary  
             BinaryFormatter formatter = new BinaryFormatter();
-            //It serialize the employee object  
+            //It serialize the user  object  
             formatter.Serialize(ms, user);
             ms.Flush();
             ms.Close();
